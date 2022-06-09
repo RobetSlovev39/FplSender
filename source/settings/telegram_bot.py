@@ -1,8 +1,15 @@
 from sys import exit
 from .settings import TG_TOKEN
 
+import logging
 from aiogram import Bot
 from aiogram.utils.exceptions import ValidationError, Unauthorized
+
+logging.basicConfig(
+  filename='logs.log',
+  encoding='utf-8',
+  level=logging.ERROR
+)
 
 try:
   telegram_bot = Bot(TG_TOKEN)
