@@ -10,12 +10,10 @@ from aiogram.dispatcher import FSMContext
 
 
 async def new_mail_at(message: Message, state: FSMContext, regexp: Match) -> None:
-  global MAIL_AT
-
   mail_at = f'{regexp.group(1)}:{regexp.group(2)}'
   mail_at = to_utc(validate_time(mail_at))
 
-  MAIL_AT = mail_at
+  MAIL_AT.change(mail_at)
   hypervisor.reschedule_task('mailing', mail_at)
 
   await message.answer('Время изменено (до перезапуска)', reply_markup=start_help_keyboard)
