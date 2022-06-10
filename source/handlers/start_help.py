@@ -1,15 +1,7 @@
-from aiogram.types import (
-  Message,
-  KeyboardButton,
-  ReplyKeyboardMarkup
-)
+from aiogram.types import Message
+from .keyboards import start_help_keyboard
 
 response_text = '''Start Help Message Text'''
 
-keyboard = ReplyKeyboardMarkup(
-  [[KeyboardButton('Just to see')]],
-  resize_keyboard=True
-)
-
 async def start_help(message: Message) -> None:
-  await message.answer(response_text, reply_markup=keyboard)
+  await message.answer(response_text, reply_markup=start_help_keyboard)
