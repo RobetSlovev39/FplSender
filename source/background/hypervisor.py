@@ -52,7 +52,7 @@ class Hypervisor:
     run_at = self.__time_to_run(run_at)
     task = aioschedule.every().day.at(run_at).do(function, *args, **kwargs)
 
-    self.tasks = (task, function)
+    self.tasks[name] = (task, function)
 
 
 hypervisor = Hypervisor()
