@@ -1,12 +1,17 @@
+from ..settings.configuration import configuration
+
 from aiogram.types import (
   KeyboardButton,
   ReplyKeyboardMarkup
 )
 
-start_help_keyboard = ReplyKeyboardMarkup(
-  [[KeyboardButton('Время отправки')]],
-  resize_keyboard=True
-)
+
+def get_start_help() -> ReplyKeyboardMarkup:
+  buttons = [
+    [KeyboardButton(value.verbose_name)]
+  for value in configuration.items.values()]
+  return ReplyKeyboardMarkup(buttons, resize_keyboard=True)
+
 
 cancel_keyboard = ReplyKeyboardMarkup(
   [[KeyboardButton('Отменить')]],

@@ -7,7 +7,7 @@ from datetime import datetime
 
 
 class MailAt(Type):
-  value: datetime
+  verbose_name = 'Время отправки'
 
   def validate(self, value: Union[datetime, str]) -> datetime:
     try:

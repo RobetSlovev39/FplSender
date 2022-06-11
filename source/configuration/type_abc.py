@@ -3,6 +3,7 @@ from typing import Union, Any, Dict
 
 
 class Type(abc.ABC):
+  verbose_name: str
 
   def __init__(self, name: str, value: Union[Any, None]) -> None:
     self.name = name

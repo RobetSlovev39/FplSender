@@ -1,4 +1,4 @@
-from ..keyboards import start_help_keyboard
+from ..keyboards import get_start_help
 from source.background.hypervisor import hypervisor
 from source.settings.configuration import configuration
 
@@ -17,7 +17,7 @@ async def new_mail_at(message: Message, state: FSMContext, regexp: Match) -> Non
   configuration['mail_at'] = mail_at
   hypervisor.reschedule_task('mailing', mail_at)
 
-  await message.answer('Время изменено (до перезапуска)', reply_markup=start_help_keyboard)
+  await message.answer('Время изменено (до перезапуска)', reply_markup=get_start_help())
   await state.finish()
 
 
