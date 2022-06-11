@@ -1,9 +1,7 @@
 from pathlib import Path
-from ..utilities import get_env_var, validate_time, to_utc
+from ..utilities import get_env_var
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-MAIL_AT = to_utc(validate_time(get_env_var('MAIL_AT'), raise_exception=True))
 
 TG_TOKEN = get_env_var('TG_TOKEN')
 ADMIN_ID = int(get_env_var('ADMIN_ID'))

@@ -1,7 +1,7 @@
 from ..settings import BASE_DIR
 from .exceptions import ValidationError
 
-from ..utilities import get_env_var, validate_time, to_utc
+from ..utilities import validate_time, to_utc
 
 from .type_abc import Type
 from .mail_at import MailAt
@@ -16,7 +16,7 @@ CONFIGURATION = BASE_DIR / 'configuration.json'
 
 
 class Configuration:
-  mail_at = MailAt('mail_at', to_utc(validate_time(get_env_var('MAIL_AT'), raise_exception=True)))
+  mail_at = MailAt('mail_at', to_utc(validate_time('12:00', raise_exception=True)))
 
   def __init__(self) -> None:
     self.items = dict()
