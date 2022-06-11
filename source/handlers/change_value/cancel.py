@@ -7,7 +7,7 @@ from aiogram.dispatcher import FSMContext
 async def cancel(message: Message, state: FSMContext) -> None:
 
   if not (await state.get_state()):
-    return await message.answer('Нечего отменять')
+    return await message.answer('Нечего отменять', reply_markup=get_start_help())
 
   await state.finish()
   await message.answer('Отменено', reply_markup=get_start_help())

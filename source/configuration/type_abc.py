@@ -4,6 +4,8 @@ from typing import Union, Any, Dict
 
 class Type(abc.ABC):
   verbose_name: str
+  response_text: str
+  error_text: str
 
   def __init__(self, name: str, value: Union[Any, None]) -> None:
     self.name = name
@@ -11,7 +13,7 @@ class Type(abc.ABC):
 
   @abc.abstractmethod
   def validate(self, value: Any) -> Any:
-    pass
+    print('12')
 
   def to_json(self) -> Dict:
     return {self.name: self.value_to_json()}

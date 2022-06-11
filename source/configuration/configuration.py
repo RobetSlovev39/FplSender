@@ -10,7 +10,7 @@ import orjson
 from os import path
 from functools import reduce
 
-from typing import Dict, Union, Any
+from typing import Dict, Union, Any, List
 
 CONFIGURATION = BASE_DIR / 'configuration.json'
 
@@ -55,3 +55,11 @@ class Configuration:
   def __setitem__(self, item_name: str, new_value: Any) -> None:
     self.items[item_name].change(new_value)
     self.write()
+
+  def all_verbose_names(self) -> List[str]:
+    return [value.verbose_name for value in self.items.values()]
+
+  def get_item_by_verbose_name(self, verbose_name: str) -> Union[Type, None]:
+    for value in self.items.values():
+      if value.verbose_name == verbose_name:
+        return value

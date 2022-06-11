@@ -5,7 +5,7 @@ from ..handlers import (
   start_help,
   my_id,
 
-  register_mail_at_handlers
+  register_change_value_handlers
 )
 
 from aiogram import Dispatcher
@@ -17,4 +17,4 @@ dispatcher = Dispatcher(telegram_bot, storage=storage)
 dispatcher.register_message_handler(start_help, IsAdmin(), commands=['start', 'help'])
 dispatcher.register_message_handler(my_id, commands=['my_id'])
 
-register_mail_at_handlers(dispatcher)
+register_change_value_handlers(dispatcher)
