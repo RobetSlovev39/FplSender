@@ -1,7 +1,8 @@
 from ..keyboards import start_help_keyboard
 from source.background.hypervisor import hypervisor
+from source.settings.configuration import configuration
 
-from source.settings import telegram_bot, MAIL_AT
+from source.settings import telegram_bot
 from source.utilities import validate_time, to_utc
 
 from re import Match
@@ -13,7 +14,7 @@ async def new_mail_at(message: Message, state: FSMContext, regexp: Match) -> Non
   mail_at = f'{regexp.group(1)}:{regexp.group(2)}'
   mail_at = to_utc(validate_time(mail_at))
 
-  MAIL_AT.change(mail_at)
+  configuration['mail_at'] = mail_at
   hypervisor.reschedule_task('mailing', mail_at)
 
   await message.answer('Время изменено (до перезапуска)', reply_markup=start_help_keyboard)
