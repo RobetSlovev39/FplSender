@@ -10,6 +10,7 @@ def get_start_help() -> ReplyKeyboardMarkup:
   buttons = [
     [KeyboardButton(value.verbose_name)]
   for value in configuration.items.values()]
+  buttons.append([KeyboardButton('Удалить получателя'), KeyboardButton('Добавить получателя')])
   return ReplyKeyboardMarkup(buttons, resize_keyboard=True)
 
 

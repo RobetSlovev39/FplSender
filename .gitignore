@@ -153,3 +153,4 @@ cython_debug/
 env.sh
 logs.log
 configuration.json
+recipients.json
