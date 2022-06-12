@@ -7,6 +7,7 @@ from ..handlers import (
   cancel,
   change_recipients, delete_recipient, do_not_delete, put_back,
   my_chat_member,
+  all_channels,
 
   register_change_value_handlers,
   register_add_recipient_handlers
@@ -27,6 +28,7 @@ dispatcher.register_message_handler(change_recipients, IsAdmin(), Text(equals='�
 dispatcher.register_callback_query_handler(delete_recipient, IsAdmin(), Regexp(r'delete\_([0-9]+)'))
 dispatcher.register_callback_query_handler(do_not_delete, IsAdmin(), Text(equals='do_not_delete'))
 dispatcher.register_callback_query_handler(put_back, IsAdmin(), Text(equals='put_back'))
+dispatcher.register_message_handler(all_channels, IsAdmin(), Text(equals='Добавленные каналы', ignore_case=True))
 
 dispatcher.register_my_chat_member_handler(my_chat_member, IsAdmin())
 
