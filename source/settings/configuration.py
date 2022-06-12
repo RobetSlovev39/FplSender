@@ -1,6 +1,5 @@
-from ..configuration import Configuration, Recipients
+from ..configuration import Configuration, Recipients, Channels
 
 configuration = Configuration()
 recipients = Recipients()
-
-
+channels = Channels()

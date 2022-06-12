@@ -154,3 +154,4 @@ env.sh
 logs.log
 configuration.json
 recipients.json
+channels.json
