@@ -1,4 +1,4 @@
-from ..keyboards import get_start_help
+from .keyboards import get_start_help
 
 from aiogram.types import Message
 from aiogram.dispatcher import FSMContext

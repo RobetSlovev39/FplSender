@@ -4,6 +4,7 @@ from .telegram_bot import telegram_bot
 from ..handlers import (
   start_help,
   my_id,
+  cancel,
   change_recipients, delete_recipient, do_not_delete, put_back,
   my_chat_member,
 
@@ -20,6 +21,8 @@ dispatcher = Dispatcher(telegram_bot, storage=storage)
 
 dispatcher.register_message_handler(start_help, IsAdmin(), commands=['start', 'help'])
 dispatcher.register_message_handler(my_id, commands=['my_id'])
+dispatcher.register_message_handler(cancel, IsAdmin(), commands=['cancel'], state='*')
+dispatcher.register_message_handler(cancel, IsAdmin(), Text(equals='Отменить', ignore_case=True), state='*')
 dispatcher.register_message_handler(change_recipients, IsAdmin(), Text(equals='Удалить получателя', ignore_case=True))
 dispatcher.register_callback_query_handler(delete_recipient, IsAdmin(), Regexp(r'delete\_([0-9]+)'))
 dispatcher.register_callback_query_handler(do_not_delete, IsAdmin(), Text(equals='do_not_delete'))
