@@ -13,7 +13,7 @@ class Type(abc.ABC):
 
   @abc.abstractmethod
   def validate(self, value: Any) -> Any:
-    print('12')
+    pass
 
   def to_json(self) -> Dict:
     return {self.name: self.value_to_json()}
