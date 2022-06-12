@@ -2,26 +2,15 @@ from ..settings import BASE_DIR
 
 import orjson
 from os import path
-from typing import List, Dict
+from typing import Dict
 
 CHANNELS = BASE_DIR / 'channels.json'
-
-
-class Channel:
-
-  def __init__(self, channel_id: int, name: str, channel_type: str) -> None:
-    self.channel_id = channel_id
-    self.name = name
-    self.channel_type = channel_type
-
-  def to_json(self) -> Dict:
-    return {'sex': self.sex}
 
 
 class Channels:
 
   def __init__(self) -> None:
-    self.channels: List[Channel] = list()
+    self.channels: Dict = dict()
 
     if not path.exists(CHANNELS):
       return self.write()
@@ -30,8 +19,21 @@ class Channels:
 
   def write(self) -> None:
     with open(CHANNELS, 'wb') as file:
-      file.write(orjson.dumps(list(map(Channel.to_json, self.channels)), option=orjson.OPT_INDENT_2))
+      file.write(orjson.dumps(self.channels, option=orjson.OPT_INDENT_2))
 
-  def read(self) -> List[Channel]:
+  def read(self) -> Dict:
     with open(CHANNELS, 'rb') as file:
-      return [Channel(**channel) for channel in orjson.loads(file.read())]
+      return orjson.loads(file.read())
+
+  def add(self, c_id: int, c_type: str, title: str, username: str) -> None:
+    self.channels[c_id] = {
+      'type': c_type,
+      'title': title,
+      'username': username
+    }
+    self.write()
+
+  def delete(self, c_id: int) -> Dict:
+    deleted = self.channels.pop(c_id)
+    self.write()
+    return deleted
