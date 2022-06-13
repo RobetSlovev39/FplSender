@@ -12,7 +12,7 @@ async def my_chat_member(update: ChatMemberUpdated) -> None:
   channel_username = update.chat.username
 
   chat_member_status = update.new_chat_member.status
-  channel_name = f'<a href=https://t.me/{channel_username}>{channel_title}</a>' if channel_username else f'<b>{channel_title}</b>'
+  channel_name = f'<a href="https://t.me/{channel_username}">{channel_title}</a>' if channel_username else f'<b>{channel_title}</b>'
 
   if channel_type == 'channel':
 

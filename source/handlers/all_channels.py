@@ -6,7 +6,7 @@ from aiogram.types import Message
 
 def channel_to_string(channel: Dict) -> str:
   channel_type = {'channel': 'Канал', 'supergroup': 'Чат'}[channel['type']]
-  channel_name = f'<a href=https://t.me/{channel["username"]}>{channel["title"]}</a>' if channel['username'] else f'<code>{channel["title"]}</code>'
+  channel_name = f'<a href="https://t.me/{channel["username"]}">{channel["title"]}</a>' if channel['username'] else f'<code>{channel["title"]}</code>'
   return f'<b>{channel_type}:</b> {channel_name}'
 
 
