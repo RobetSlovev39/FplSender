@@ -31,5 +31,5 @@ async def change_value(message: Message, state: FSMContext) -> None:
     item.change(to_utc(item.value))
     hypervisor.reschedule_task('mailing', item.value_to_json())
 
-  await message.answer('Время изменено', reply_markup=get_start_help())
+  await message.answer('Изменено', reply_markup=get_start_help())
   await state.finish()
