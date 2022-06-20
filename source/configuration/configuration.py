@@ -5,6 +5,10 @@ from ..utilities import validate_time, to_utc
 
 from .type_abc import Type
 from .mail_at import MailAt
+from .lat import Lat
+from .lng import Lng
+from .radius import Radius
+from .alt import Alt
 
 import orjson
 from os import path
@@ -14,9 +18,12 @@ from typing import Dict, Union, Any, List
 
 CONFIGURATION = BASE_DIR / 'configuration.json'
 
-
 class Configuration:
   mail_at = MailAt('mail_at', to_utc(validate_time('12:00', raise_exception=True)))
+  lat = Lat('lat', 54.652777)
+  lng = Lng('lng', 20.993611)
+  radius = Radius('radius', '005')
+  alt = Alt('alt', 'A020')
 
   def __init__(self) -> None:
     self.items = dict()
@@ -57,7 +64,7 @@ class Configuration:
     self.write()
 
   def all_verbose_names(self) -> List[str]:
-    return [value.verbose_name for value in self.items.values()]
+    return sorted([value.verbose_name for value in self.items.values()])
 
   def get_item_by_verbose_name(self, verbose_name: str) -> Union[Type, None]:
     for value in self.items.values():

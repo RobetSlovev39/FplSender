@@ -155,3 +155,4 @@ logs.log
 configuration.json
 recipients.json
 channels.json
+.DS_Store
