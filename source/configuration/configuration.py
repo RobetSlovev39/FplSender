@@ -10,6 +10,7 @@ from .lng import Lng
 from .radius import Radius
 from .alt import Alt
 from .dep_time import DepTime
+from .text import Text
 
 import orjson
 from os import path
@@ -19,6 +20,15 @@ from typing import Dict, Union, Any, List
 
 CONFIGURATION = BASE_DIR / 'configuration.json'
 
+default_text = '''FPL—ZZZZ-VG
+-ZZZZ/L-V/N
+-ZZZZ{dep_time}
+-K0130{alt}  /ZONA R{radius} 5439N02059E/
+-ZZZZ{endur}
+-DOF/{dof} DEP/5439N02059E DEST/5439N02059E TYP/PARAPLAN DO 125KG OPR/VLADIMIR SOLOMATIN RMK/UTP S PLOSHADKI RADIUS {radius}KM
+-C/VLADIMIR SOLOMATIN +79097751000)'''
+
+
 class Configuration:
   mail_at = MailAt('mail_at', to_utc(validate_time('12:00', raise_exception=True)))
   lat = Lat('lat', 54.652777)
@@ -26,6 +36,7 @@ class Configuration:
   radius = Radius('radius', '005')
   alt = Alt('alt', 'A020')
   dep_time = DepTime('dep_time', '0700')
+  text = Text('text', default_text)
 
   def __init__(self) -> None:
     self.items = dict()
