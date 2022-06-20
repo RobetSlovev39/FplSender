@@ -9,6 +9,7 @@ from .lat import Lat
 from .lng import Lng
 from .radius import Radius
 from .alt import Alt
+from .dep_time import DepTime
 
 import orjson
 from os import path
@@ -24,6 +25,7 @@ class Configuration:
   lng = Lng('lng', 20.993611)
   radius = Radius('radius', '005')
   alt = Alt('alt', 'A020')
+  dep_time = DepTime('dep_time', '0700')
 
   def __init__(self) -> None:
     self.items = dict()
