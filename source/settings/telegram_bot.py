@@ -8,7 +8,7 @@ from aiogram.utils.exceptions import ValidationError, Unauthorized
 logging.basicConfig(
   filename='logs.log',
   encoding='utf-8',
-  level=logging.ERROR
+  level=logging.INFO
 )
 
 try:
