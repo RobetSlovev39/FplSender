@@ -5,7 +5,6 @@ from .background import background
 from .settings import authenticate, dispatcher, close_session
 
 
-
 async def main() -> None:
   me = await authenticate()
 
