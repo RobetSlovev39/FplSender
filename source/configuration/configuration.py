@@ -20,7 +20,7 @@ from typing import Dict, Union, Any, List
 
 CONFIGURATION = BASE_DIR / 'configuration.json'
 
-default_text = '''FPL—ZZZZ-VG
+default_text = '''FPL-ZZZZ-VG
 -ZZZZ/L-V/N
 -ZZZZ{dep_time}
 -K0130{alt}  /ZONA R{radius} 5439N02059E/
