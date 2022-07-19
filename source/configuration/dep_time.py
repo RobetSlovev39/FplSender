@@ -12,7 +12,7 @@ error_text = 'Неверный формат'
 
 
 class DepTime(Type):
-  verbose_name = 'Время отправки'
+  verbose_name = 'Dep Time'
   error_text = error_text
 
   def validate(self, value: str) -> time:
