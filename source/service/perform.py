@@ -1,3 +1,4 @@
+from ..settings.settings import ADMIN_ID
 from ..settings.telegram_bot import telegram_bot
 from ..settings.configuration import recipients, channels
 
@@ -19,7 +20,10 @@ async def perform(text: str, dep_time: time, alt: str, radius: int, lat: float, 
     lng
   )
 
-  await send_mails(recipients.recipients, text)
+  sent = await send_mails(recipients.recipients, text)
+
+  if sent is False:
+    await telegram_bot.send_message(ADMIN_ID, 'WRONG SMTP CREDENTIALS')
 
   for channel in channels.channels:
     try:
