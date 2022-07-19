@@ -2,6 +2,7 @@ aiogram==2.20
 aiohttp==3.8.1
 aioschedule==0.5.2
 aiosignal==1.2.0
+aiosmtplib==1.1.6
 anyio==3.6.1
 async-timeout==4.0.2
 attrs==21.4.0
