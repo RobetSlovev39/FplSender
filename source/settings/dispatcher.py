@@ -10,7 +10,8 @@ from ..handlers import (
   all_channels,
 
   register_change_value_handlers,
-  register_add_recipient_handlers
+  register_add_recipient_handlers,
+  register_manual_mailing_handlers
 )
 
 from aiogram import Dispatcher
@@ -34,3 +35,4 @@ dispatcher.register_my_chat_member_handler(my_chat_member, IsAdmin())
 
 register_change_value_handlers(dispatcher)
 register_add_recipient_handlers(dispatcher)
+register_manual_mailing_handlers(dispatcher)

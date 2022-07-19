@@ -7,3 +7,4 @@ from .all_channels import all_channels
 
 from .change_value import register_change_value_handlers
 from .add_recipients import register_add_recipient_handlers
+from .manual_mailing import register_manual_mailing_handlers
